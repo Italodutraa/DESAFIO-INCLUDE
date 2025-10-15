@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres_db_reviews
+    restart: always
+    environment:
+      POSTGRES_USER: admin          # Usuário do banco (mude se quiser)
+      POSTGRES_PASSWORD: password123  # Senha do banco (mude para algo seguro)
+      POSTGRES_DB: game_reviews_db  # Nome do banco de dados a ser criado
+    ports:
+      - "5432:5432" # Mapeia a porta 5432 do container para a porta 5432 da sua máquina
+    volumes:
+      - postgres-data:/var/lib/postgresql/data # Garante que os dados não sejam perdidos
+
+volumes:
+  postgres-data:
